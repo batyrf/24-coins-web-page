@@ -5,299 +5,193 @@
     box-sizing: border-box;
 }
 
+/* System theme detection */
+:root {
+    color-scheme: light dark;
+}
+
+/* Light mode (default) */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #f8f8f8;
+    background-color: white;
+    color: black;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: black;
+        color: white;
+    }
+    
+    .app-button {
+        background-color: #1a1a1a !important;
+        border: 1px solid #333 !important;
+    }
+    
+    .app-button:hover {
+        background-color: #2a2a2a !important;
+        border-color: #444 !important;
+    }
+}
+
+/* Container and layout */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Header */
-header {
-    background: linear-gradient(135deg, #d4af37, #ffd700);
-    color: white;
-    padding: 1rem 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-header h1 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-}
-
-nav ul {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    gap: 2rem;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-nav a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Hero section */
-.hero {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23d4af37"/></svg>');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    text-align: center;
-    padding: 6rem 0;
-    min-height: 60vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
-}
-
-.hero-content h2 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.cta-button {
-    background: linear-gradient(45deg, #d4af37, #ffd700);
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-    font-weight: bold;
-}
-
-.cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
-}
-
-/* About section */
-.about {
-    padding: 4rem 0;
-    background: white;
-}
-
-.about h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: #d4af37;
-}
-
-.about p {
-    text-align: center;
-    font-size: 1.1rem;
-    margin-bottom: 3rem;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.feature {
-    text-align: center;
+    justify-content: center;
     padding: 2rem;
-    background: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
 }
 
-.feature:hover {
-    transform: translateY(-5px);
-}
-
-.feature h3 {
-    color: #d4af37;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-/* Coins gallery */
-.coins-gallery {
-    padding: 4rem 0;
-    background: #f8f8f8;
-}
-
-.coins-gallery h2 {
+.content {
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    color: #d4af37;
-}
-
-.coins-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-}
-
-.coin-card {
-    background: white;
-    border-radius: 15px;
-    padding: 1.5rem;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: 2px solid transparent;
-}
-
-.coin-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
-    border-color: #d4af37;
-}
-
-.coin-number {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #d4af37;
-    margin-bottom: 0.5rem;
-}
-
-.coin-name {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    color: #333;
-}
-
-.coin-description {
-    font-size: 0.9rem;
-    color: #666;
-}
-
-/* Contact section */
-.contact {
-    padding: 4rem 0;
-    background: white;
-}
-
-.contact h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: #d4af37;
-}
-
-.contact p {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
-}
-
-.contact-form {
     max-width: 600px;
-    margin: 0 auto;
-    display: grid;
+    width: 100%;
+}
+
+/* Quote styling */
+.quote {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 3rem;
+    font-style: italic;
+    line-height: 1.4;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Get App title */
+.get-app-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+}
+
+/* App buttons container */
+.app-buttons {
+    display: flex;
+    flex-direction: row;
     gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-.contact-form input,
-.contact-form textarea {
-    padding: 1rem;
-    border: 2px solid #ddd;
-    border-radius: 5px;
+/* Individual app button */
+.app-button {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+    min-width: 180px;
+    max-width: 200px;
+    gap: 0.75rem;
+}
+
+.app-button:hover {
+    background-color: #e8e8e8;
+    border-color: #bbb;
+    transform: translateY(-1px);
+}
+
+/* App button icons */
+.app-button img {
+    width: 24px;
+    height: 24px;
+    opacity: 0.8;
+}
+
+/* Button text container */
+.button-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+}
+
+.button-subtitle {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    line-height: 1;
+    margin-bottom: 0.15rem;
+}
+
+.button-title {
     font-size: 1rem;
-    transition: border-color 0.3s;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    outline: none;
-    border-color: #d4af37;
-}
-
-.contact-form textarea {
-    min-height: 120px;
-    resize: vertical;
-}
-
-.contact-form button {
-    background: linear-gradient(45deg, #d4af37, #ffd700);
-    color: white;
-    border: none;
-    padding: 1rem;
-    font-size: 1.1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-    font-weight: bold;
-}
-
-.contact-form button:hover {
-    background: linear-gradient(45deg, #b8941f, #e6c200);
-}
-
-/* Footer */
-footer {
-    background: #333;
-    color: white;
-    text-align: center;
-    padding: 2rem 0;
+    font-weight: 600;
+    line-height: 1;
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
-    header h1 {
-        font-size: 2rem;
+    .app-buttons {
+        gap: 0.75rem;
     }
     
-    nav ul {
-        flex-wrap: wrap;
+    .app-button {
+        min-width: 160px;
+        max-width: 180px;
+        padding: 0.625rem 1rem;
+    }
+    
+    .button-text {
+        gap: 0.1rem;
+    }
+    
+    .button-subtitle {
+        font-size: 0.7rem;
+    }
+    
+    .button-title {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1.5rem;
+    }
+    
+    .quote {
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+    }
+    
+    .get-app-title {
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .app-buttons {
+        flex-direction: column;
         gap: 1rem;
     }
     
-    .hero-content h2 {
-        font-size: 2rem;
+    .app-button {
+        width: 100%;
+        max-width: 280px;
+        min-width: auto;
+        padding: 0.875rem 1.25rem;
     }
-    
-    .hero-content p {
-        font-size: 1rem;
-    }
-    
-    .features {
-        grid-template-columns: 1fr;
-    }
-    
-    .coins-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 1rem;
-    }
-    
-    .coin-number {
-        font-size: 2rem;
-    }
+}
+
+/* Accessibility improvements */
+.app-button:focus {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
+/* Smooth animations */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
