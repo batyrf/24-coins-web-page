@@ -1,3 +1,4 @@
+
 # Get App - Simple App Download Page
 
 A clean, minimal single-page website featuring an inspirational quote and app download buttons that automatically adapts to the user's system theme (light/dark mode).
